@@ -1,8 +1,9 @@
 from operator import pow
 from time import time
-
+from functools import wraps
 
 def benchmark(func):
+    @wraps(func)
     def wrapper(*args, **kwargs):
         print(f"time_decorator for {func.__name__} with args {args}")
         start_time = time()
