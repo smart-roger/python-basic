@@ -1,4 +1,17 @@
 from operator import pow
+from time import time
+
+
+def benchmark(func):
+    def wrapper(*args, **kwargs):
+        print(f"time_decorator for {func.__name__} with args {args}")
+        start_time = time()
+        res = func(*args, **kwargs)
+        end_time = time()
+        print(f"computed in {end_time - start_time} secs")
+        return res
+
+    return wrapper
 
 
 def func_power(input_list, power=2):
@@ -20,6 +33,7 @@ def is_simple(value):
     return True
 
 
+@benchmark
 def filter_list(input_list, filter_type):
     if filter_type == FILTER_ODD:
         return list(filter(lambda x: 1 == x % 2, input_list))
@@ -33,11 +47,13 @@ def filter_list(input_list, filter_type):
 
 test_input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
+print("Demo func_power")
 print("Power zero: ", func_power(test_input, power=0))
 print("Power 1: ", func_power(test_input, power=1))
 print("Squares: ", func_power(test_input))
 print("Cubes: ", func_power(test_input, 3))
 
-print("Odd only: ", filter_list(test_input, FILTER_ODD))
-print("Even only: ", filter_list(test_input, FILTER_EVEN))
-print("Simple only: ", filter_list(test_input, FILTER_SIMPLE))
+print("\n\nDemo filter_list (with benchmark decorator)")
+print("Odd only: ", filter_list(range(0, 10000), FILTER_ODD), "\n")
+print("Even only: ", filter_list(range(0, 10000), FILTER_EVEN), "\n")
+print("Simple only: ", filter_list(range(0, 10000), FILTER_SIMPLE),"\n")
