@@ -2,6 +2,7 @@ from operator import pow
 from time import time
 from functools import wraps
 
+
 def benchmark(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -57,4 +58,29 @@ print("Cubes: ", func_power(test_input, 3))
 print("\n\nDemo filter_list (with benchmark decorator)")
 print("Odd only: ", filter_list(range(0, 10000), FILTER_ODD), "\n")
 print("Even only: ", filter_list(range(0, 10000), FILTER_EVEN), "\n")
-print("Simple only: ", filter_list(range(0, 10000), FILTER_SIMPLE),"\n")
+print("Simple only: ", filter_list(range(0, 10000), FILTER_SIMPLE), "\n")
+
+
+def trace(func):
+    trace.level = 0
+    trace.splitter = "----"
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        trace.level += 1
+        print(f" {trace.level * trace.splitter} call {func.__name__}({args[0]})")
+        res = func(*args, **kwargs)
+        trace.level -= 1
+        return res
+
+    return wrapper
+
+
+@trace
+def fib(n):
+    if n in (0, 1):
+        return 1
+    return fib(n - 1) + fib(n - 2)
+
+
+print(fib(10))
