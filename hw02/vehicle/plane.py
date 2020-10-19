@@ -1,28 +1,24 @@
-from vehicle_base import VehicleBase
-
-from vehicle_base import VehicleBase
+from vehicle.vehicle_base import VehicleBase
 
 class Plane(VehicleBase):
-    def __init__(self, vendor, model, power, passengers, *args, **kwargs):
+    def __init__(self, passengers, range_km, *args, **kwargs):
+        kwargs["environment"] = "air"
+        kwargs["fuel_type"] = "kerosene"
         super().__init__(*args, **kwargs)
+
         self._passengers = passengers
+        self._range_km = range_km
+
 
     def beep(self):
-        return "Сlickety-clack"
+        return "Nope"
 
     def __str__(self):
-        return f"Train.\n" \
-               f"{self._vendor} {self._model} {self._power}. {self._wagons} wagons." \
+        return f"Plane.\n" \
+               f"{super().__str__()} \n" \
+               f"Passengers: {self._passengers} passengers. Flight range: {self._range_km} km.\n" \
                f"Signal: {self.beep()}"
 
 if __name__ == '__main__':
-    DemoTrain = Train(vendor="Vendor",
-                  model="Model",
-                  weight_kg="weight",
-                  speed_km_h="speed",
-                  payload_kg="payload",
-                  power="power",
-                  environment="ground",
-                  wagons=20)
-    print(DemoTrain)
-    print(DemoTrain.beep())
+    DemoPlane = Plane(0, 1, "demo_vendor", "demo_model", 2, 3, 4)
+    print(DemoPlane)
