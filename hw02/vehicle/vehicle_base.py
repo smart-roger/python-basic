@@ -23,12 +23,12 @@ class VehicleBase:
     @abstractmethod
     def signal(self) -> str:
         """Demonstrate vehicle sound."""
-        raise ValueError("Signal not implemented for vehicle!")
+        raise NotImplementedError
 
     @abstractmethod
     def move(self, km):
         """Simulate vehicle moving"""
-        raise ValueError("Moving not implemented for vehicle!")
+        raise NotImplementedError
 
     @property
     def fuel(self):
