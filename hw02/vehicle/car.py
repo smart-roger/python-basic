@@ -14,13 +14,13 @@ class Car(VehicleBase):
 
     @property
     def fuel(self):
-        return f"{super().fuel} + {super().fuel_type}"
+        return f"{super().fuel} + {self.fuel_type()}"
 
     def __str__(self):
-        return f"Car.\n" \
-               f"{self._passengers} passengers.\n"\
-               f"{super().__str__()}\n"\
-               f"Signal: {self.signal()}"
+        return (f"Car.\n"
+               f"{self._passengers} passengers.\n"
+               f"{super().__str__()}\n"
+               f"Signal: {self.signal()}\n")
 
 
 if __name__ == '__main__':

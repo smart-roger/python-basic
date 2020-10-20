@@ -14,10 +14,10 @@ class Plane(VehicleBase):
         return "Nope"
 
     def __str__(self):
-        return f"Plane.\n" \
-               f"{super().__str__()} \n" \
-               f"Passengers: {self._passengers} passengers. Flight range: {self._range_km} km.\n" \
-               f"Signal: {self.beep()}"
+        return (f"Plane.\n"
+               f"{super().__str__()}\n"
+               f"Passengers: {self._passengers} passengers. Flight range: {self._range_km} km.\n"
+               f"Signal: {self.beep()}\n")
 
 if __name__ == '__main__':
     DemoPlane = Plane(0, 1, "demo_vendor", "demo_model", 2, 3, 4)

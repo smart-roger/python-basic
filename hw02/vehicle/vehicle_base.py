@@ -51,8 +51,8 @@ class VehicleBase:
             self._fuel -= fuel
 
     def __str__(self):
-        return f"{str(self._params)}\n" \
-               f"Fuel:{self._fuel} {self._params.fuel_type}."
+        return (f"{str(self._params)}\n"
+               f"Fuel:{self._fuel} {self._params.fuel_type}.")
 
 
 if __name__ == '__main__':

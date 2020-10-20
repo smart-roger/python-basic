@@ -2,7 +2,8 @@ from vehicle.plane import Plane
 from vehicle.ship import Ship
 from vehicle.car import Car
 
-print("Demo.\n")
+print("Demo.")
+example_delimiter = "=" * 100
 
 #RaceCar example
 RaceCar = Car(vendor="Toyota",
@@ -17,8 +18,9 @@ print(RaceCar.fuel)
 RaceCar.use_fuel(50)
 RaceCar.use_fuel(10)
 print(RaceCar.signal())
-print(f"RaceCar example:\n{RaceCar}\n")
+print(f"RaceCar example:\n{RaceCar}")
 print(dir(RaceCar))
+print(example_delimiter)
 
 #Minivan example
 Minivan = Car(vendor="Fiat",
@@ -27,8 +29,9 @@ Minivan = Car(vendor="Fiat",
               speed_km_h=95,
               payload_kg=500,
               passengers=3)
-print(f"Minivan example:\n{Minivan}\n")
+print(f"Minivan example:\n{Minivan}")
 print(dir(Minivan))
+print("="*100)
 
 #Cutter example
 print("Cutter example:\n")
@@ -38,17 +41,18 @@ Cutter = Ship(model="GT245",
               speed_km_h=90,
               payload_kg=1800,
               )
-print ("After fill up:\n")
+print ("After fill up:")
 Cutter.fill_up(100, "petrol, liter")
 print(Cutter)
 print(dir(Cutter))
 
-print("Using 50 petrol litres.\n")
+print("Using 50 petrol litres.")
 Cutter.use_fuel(50)
 print(Cutter)
+print(example_delimiter)
 
 #Plane example
-print("Plane example:\n")
+print("Plane example:")
 Plane_MC_21 = Plane(vendor="OAC",
                     model="MC-21-300",
                     weight_kg=72560,
@@ -59,3 +63,4 @@ Plane_MC_21 = Plane(vendor="OAC",
 Plane_MC_21.fill_up(20400, "kerosene")
 print(Plane_MC_21)
 print(dir(Plane_MC_21))
+print(example_delimiter)

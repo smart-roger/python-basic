@@ -10,9 +10,9 @@ class Ship(VehicleBase):
         return "Tooooo"
 
     def __str__(self):
-        return f"Ship.\n" \
-               f"{super().__str__()}\n"\
-               f"Signal: {self.beep()}"
+        return (f"Ship.\n" 
+               f"{super().__str__()}\n"
+               f"Signal: {self.beep()}")
 
 if __name__ == '__main__':
     DemoShip = Ship(vendor="Esso International Shipping Co Ltd",
